@@ -1,0 +1,51 @@
+{
+  "name": "redux-normalized-entities",
+  "version": "0.0.1",
+  "description": "Store and retrieve data easily",
+  "main": "lib/index.js",
+  "dependencies": {
+    "redux": "3.6.0",
+    "reselect": "2.5.4"
+  },
+  "devDependencies": {
+    "babel-cli": "6.18.0",
+    "babel-core": "6.18.2",
+    "babel-loader": "6.2.8",
+    "babel-preset-es2015": "6.18.0",
+    "babel-preset-react": "6.16.0",
+    "babel-preset-stage-0": "6.16.0",
+    "cross-env": "3.1.3",
+    "deep-freeze": "0.0.1",
+    "expect": "1.20.2",
+    "mocha": "3.1.2",
+    "rimraf": "2.5.4",
+    "webpack": "1.13.3",
+    "webpack-dev-server": "1.16.2"
+  },
+  "scripts": {
+    "clean": "rimraf lib dist es",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib --ignore *.spec.js",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore *.spec.js",
+    "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack ./src/index.js ./dist/redux-normalized-entities.js",
+    "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack ./src/index.js ./dist/redux-normalized-entities.min.js",
+    "build": "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
+    "prepare": "npm run clean && npm run build",
+    "test": "mocha --compilers js:babel-register --require babel-polyfill --recursive ./src/**/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcollis/redux-normalized-entities.git"
+  },
+  "keywords": [
+    "redux",
+    "react",
+    "normalizr",
+    "reducer"
+  ],
+  "author": "Mike Collis <collis.michael@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mcollis/redux-normalized-entities/issues"
+  },
+  "homepage": "https://github.com/mcollis/redux-normalized-entities#readme"
+}
