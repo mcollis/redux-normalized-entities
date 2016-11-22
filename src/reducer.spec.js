@@ -15,7 +15,7 @@ const comments = {
 
 describe('Entities Reducer', () => {
     it('should grab "entities" from the action', () => {
-        const result = reducer({
+        const result = reducer({}, {
             type: 'TEST_ENTITY',
             entities: { articles, comments }
         });
@@ -26,25 +26,25 @@ describe('Entities Reducer', () => {
             '0': articles['0']
         } };
         deepFreeze(previous);
-        const result = reducer({
+        const result = reducer(previous, {
             type: 'TEST_ENTITY',
             entities: { articles: {
                 '1': articles['1']
             }}
-        }, previous);
+        });
         expect(result).toEqual({ articles });
     });
     it('should merge existing "entities"', () => {
         const previous = { articles, comments };
         deepFreeze(previous);
-        const result = reducer({
+        const result = reducer(previous, {
             type: 'TEST_ENTITY',
             entities: {
                 articles: { 
                     '0': { title: 'New Title' }
                 }
             }
-        }, previous);
+        });
         expect(result).toEqual({
             articles: {
                 '0': {...articles['0'], title: 'New Title'},

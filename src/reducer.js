@@ -1,4 +1,4 @@
-const reducer = ({ entities }, state = {}) => {
+const reducer = (state = {}, { entities }) => {
     if( entities ) {
         // for each key in entities
         const merged = Object.keys(entities).reduce((acc, key) => {
