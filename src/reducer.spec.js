@@ -14,6 +14,10 @@ const comments = {
 }
 
 describe('Entities Reducer', () => {
+    it('should return existing state if no entities', () => {
+        const result = reducer();
+        expect(result).toEqual({});
+    })
     it('should grab "entities" from the action', () => {
         const result = reducer({}, {
             type: 'TEST_ENTITY',

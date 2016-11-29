@@ -38,5 +38,9 @@ describe('Entity Selectors', () => {
                 { id: 0, title: 'Article 1' }
             ]);
         });
+        it('should fail gracefully', () => {
+            const result = getEntities('articles')(state);
+            expect(result).toEqual([]);
+        })
     });
 });
