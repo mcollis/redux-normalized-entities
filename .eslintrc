@@ -1,0 +1,15 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/forbid-prop-types": 0,
+    "no-underscore-dangle": 0,
+    "no-confusing-arrow": 0,
+    "comma-dangle": ["error", "never"],
+    "import/prefer-default-export": 0
+  },
+  "env":{
+    "browser": true,
+    "mocha": true
+  }
+}

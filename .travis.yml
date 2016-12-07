@@ -11,8 +11,7 @@ node_js:
 before_script:
   - npm prune
 script:
-  - npm run coverage
-  - npm run check-coverage
+  - npm run validate
 after_success:
   - npm run report-coverage
   - npm run semantic-release
