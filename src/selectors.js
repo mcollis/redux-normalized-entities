@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-export const entities = ({ entities }) => entities;
+export const entities = ({ entities: output }) => output;
 
 export const getEntity = (name, id) => createSelector(
     entities,
@@ -9,7 +9,7 @@ export const getEntity = (name, id) => createSelector(
 
 export const getEntities = (name, ids = []) => createSelector(
     state => state,
-    state => 
+    state =>
         ids.map(id => getEntity(name, id)(state))
             .filter(entity => !!entity)
 );
